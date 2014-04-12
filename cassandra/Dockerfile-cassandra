@@ -1,0 +1,30 @@
+# https://wiki.apache.org/cassandra/GettingStarted
+
+# Pull base image.
+FROM dockerfile/java
+
+# Install Cassandra
+# https://wiki.apache.org/cassandra/DebianPackaging
+
+RUN echo "deb http://www.apache.org/dist/cassandra/debian 11x main" > /etc/apt/sources.list.d/cassandra.list
+RUN echo "deb-src http://www.apache.org/dist/cassandra/debian 11x main" >> /etc/apt/sources.list.d/cassandra.list
+
+RUN gpg --keyserver pgp.mit.edu --recv-keys F758CE318D77295D
+RUN gpg --export --armor F758CE318D77295D | sudo apt-key add -
+RUN gpg --keyserver pgp.mit.edu --recv-keys 2B5C1B00
+RUN gpg --export --armor 2B5C1B00 | sudo apt-key add -
+RUN apt-get update
+RUN sudo apt-get install -y cassandra
+
+# /etc/cassandra
+# /etc/default/cassandra
+
+# Expose ports.
+#   - 9200: HTTP
+#   - 9300: transport
+EXPOSE 9200
+EXPOSE 9300
+
+# Define an entry point.
+#ENTRYPOINT ["/opt/elasticsearch/bin/elasticsearch"]
+#CMD ["-f"]

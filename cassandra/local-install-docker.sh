@@ -36,5 +36,7 @@ fi
 
 
 docker pull ubuntu
+# echo "now try: sudo docker run -i -t ubuntu /bin/bash"
 
-echo "now try: sudo docker run -i -t ubuntu /bin/bash"
+docker build -t cassandra - < Dockerfile-cassandra
+
