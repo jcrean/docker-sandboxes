@@ -2,7 +2,7 @@ set -eu
 
 DROPLET_NAME=cassandra-1x4
 REGION=nyc2
-DROPLET_SIZE=1gb
+DROPLET_SIZE=2gb
 IMAGE_NAME=ubuntu-13-10-x64
 SSH_KEY_ID=$(diocean ssh-keys ls  | cut -f1 | head -n 2 | tail -n 1)
 PRIVATE_NETWORKING=false
