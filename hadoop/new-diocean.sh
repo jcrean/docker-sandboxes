@@ -24,7 +24,5 @@ while [ $(droplet_ip $DROPLET_NAME) == "" ]; do
 done
 
 rsync -avz files root@$(droplet_ip $DROPLET_NAME):
-scp Dockerfile root@$(droplet_ip $DROPLET_NAME):
 ssh root@$(droplet_ip $DROPLET_NAME) "bash files/bootstrap-docker.sh"
 ssh root@$(droplet_ip $DROPLET_NAME) "bash files/bootstrap-hadoop.sh"
-#ssh root@$(droplet_ip $DROPLET_NAME) "docker build -t hadoop ."
