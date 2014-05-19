@@ -1,0 +1,31 @@
+# See:
+# https://github.com/mischief/docker-golang
+FROM ubuntu
+
+# env vars
+ENV HOME /root
+ENV GOPATH /root/go
+ENV PATH /root/go/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+
+# GOPATH
+RUN mkdir -p /root/go
+
+# apt
+#RUN echo "deb http://mirror.anl.gov/pub/ubuntu precise main universe" > /etc/apt/sources.list
+RUN apt-get update
+RUN sudo apt-get install -y lxc-docker build-essential mercurial bzr git-core subversion curl wget
+
+# go 1.2.2 tarball
+RUN wget -qO- https://storage.googleapis.com/golang/go1.2.2.linux-amd64.tar.gz | tar -C /usr/local -xzf -
+
+
+####################
+RUN go get github.com/go-martini/martini
+
+#RUN cd /root/go && wget 
+
+WORKDIR /root/go
+ADD /root/docker-init/service.go /root/go/service.go
+
+EXPOSE 3000
+ENTRYPOINT go run /root/go/service.go
