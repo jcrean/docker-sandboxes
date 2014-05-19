@@ -20,3 +20,6 @@ fi
 
 scp bootstrap-docker.sh root@$(droplet_ip $DROPLET_NAME):
 ssh root@$(droplet_ip $DROPLET_NAME) "bash bootstrap-docker.sh"
+
+scp bootstrap-cassandra.sh root@$(droplet_ip $DROPLET_NAME):
+ssh root@$(droplet_ip $DROPLET_NAME) "bash bootstrap-cassandra.sh"
