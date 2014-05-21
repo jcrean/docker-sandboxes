@@ -29,4 +29,5 @@ DROPLET_IP_ADDRESS=$(droplet_ip_address $DROPLET_NAME)
 rsync -avz . root@$DROPLET_IP_ADDRESS:docker-init/
 
 ssh root@$DROPLET_IP_ADDRESS "cd docker-init; bash local-install-docker.sh"
+ssh root@$DROPLET_IP_ADDRESS "cd docker-init; bash bootstrap-cassandra.sh"
 
