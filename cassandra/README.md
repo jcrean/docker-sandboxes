@@ -20,8 +20,13 @@ To get the list of IP addresses for the docker instances:
 
 To run cqlsh:
 
+    ./client.sh 2.0.7 cqlsh cass1
+    ./client.sh 2.0.7 cqlsh cass2
+    ./client.sh 2.0.7 cqlsh cass3
+
     bash client.sh 2.0.7 bash
     CQLSH_HOST=172.17.0.2 cqlsh
+
 
 GOALS
 =======
